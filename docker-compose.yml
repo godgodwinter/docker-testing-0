@@ -18,9 +18,12 @@ services:
       - ./php/php.ini:/usr/local/etc/php/conf.d/custom.ini
   db:
     image: mariadb:latest
+    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=admin12345
-      - MYSQL_PASSWORD=admin12345
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - '3306:3306'
     volumes:
       - ./db:/var/lib/mysql
   phpmyadmin:
