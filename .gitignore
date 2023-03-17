@@ -106,3 +106,4 @@ dist
 # docker
 mysql
 db
+.env
