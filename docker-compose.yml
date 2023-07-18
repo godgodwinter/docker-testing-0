@@ -1,4 +1,3 @@
-version: '3'
 services:
   nginx:
     restart: always
@@ -10,6 +9,9 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/ssl:/etc/nginx/ssl
       - ./app:/var/www/html
+      - ./nginx/phpmyadmin.conf:/etc/nginx/conf.d/phpmyadmin.conf
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME}
     depends_on:
       - php
   php:
